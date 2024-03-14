@@ -10,11 +10,19 @@ const ToDoList = ({
   onInputFocus,
   onEditButtonClick,
   onDeleteButtonClick,
-  selectAllTask,
+  selectCheckbox,
+  isCheckedAll,
+  onChangeCheckbox,
+  deleteAll,
 }) => {
   return (
     <>
-      <SelectAll taskList={taskList} selectAllTask={selectAllTask} />
+      <SelectAll
+        onChangeCheckbox={onChangeCheckbox}
+        isCheckedAll={isCheckedAll}
+        selectCheckbox={selectCheckbox}
+        deleteAll={deleteAll}
+      />
       <ul className={css.taskList}>
         {taskList.map(task => (
           <li key={task.id}>

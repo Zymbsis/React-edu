@@ -1,40 +1,53 @@
- .editButton,
- .deleteButton {
-   width: 50px;
-   height: 50px;
-   border-radius: 5px;
-   background-color: cadetblue;
- }
+.inputWrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
 
- .editButton:disabled {
-   background-color: rgb(123, 176, 178);
- }
+.buttonWrapper {
+  width: 110px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
 
- .checkbox {
-   display: inline-flex;
-   width: 30px;
-   height: 30px;
- }
+.editButton,
+.deleteButton {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  background-color: cadetblue;
+}
 
- .textarea {
-   height: 60px;
-   width: 600px;
-   padding-top: 15px;
-   padding-bottom: 15px;
-   font-size: 22px;
-   padding-left: 10px;
-   border-radius: 5px;
-   /* text-transform: capitalize; */
-   border: none;
-   background-color: transparent;
- }
+.editButton:disabled {
+  background-color: rgb(123, 176, 178);
+}
 
- .textareaBorder {
-   composes: textarea;
-   border: 1px solid cadetblue;
- }
+.checkbox {
+  display: inline-flex;
+  width: 30px;
+  height: 30px;
+}
 
- .textareaDone {
-   composes: textarea;
-   text-decoration: line-through;
- }
+.textarea {
+  height: 60px;
+  width: 600px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 22px;
+  padding-left: 10px;
+  border-radius: 5px;
+  /* text-transform: capitalize; */
+  border: none;
+  background-color: transparent;
+}
+
+.textareaBorder {
+  composes: textarea;
+  border: 1px solid cadetblue;
+}
+
+.textareaDone {
+  composes: textarea;
+  text-decoration: line-through;
+}

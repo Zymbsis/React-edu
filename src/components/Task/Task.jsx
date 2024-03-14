@@ -14,41 +14,45 @@ const Task = ({
 }) => {
   return (
     <>
-      <input
-        className={css.checkbox}
-        type="checkbox"
-        checked={checkboxChecked}
-        disabled={!inputDisabled}
-        onChange={() => onClickCheckbox(id)}
-      />
-      <textarea
-        className={clsx(css.textarea, {
-          [css.textareaBorder]: !inputDisabled,
-          [css.textareaDone]: checkboxChecked,
-        })}
-        type="text"
-        value={text}
-        disabled={inputDisabled}
-        onChange={e => onChangeTask(e, id)}
-        onBlur={() => onInputBlur(id)}
-        onFocus={() => onInputFocus(id)}
-      />
-      <button
-        type="button"
-        className={css.editButton}
-        disabled={checkboxChecked || editButtonDisabled}
-        onClick={() => onEditButtonClick(id)}
-      >
-        <FaPencil size={30} color="#fbfbfb" />
-      </button>
-      {checkboxChecked && (
+      <div className={css.inputWrapper}>
+        <input
+          className={css.checkbox}
+          type="checkbox"
+          checked={checkboxChecked}
+          disabled={!inputDisabled}
+          onChange={() => onClickCheckbox(id)}
+        />
+        <textarea
+          className={clsx(css.textarea, {
+            [css.textareaBorder]: !inputDisabled,
+            [css.textareaDone]: checkboxChecked,
+          })}
+          type="text"
+          value={text}
+          disabled={inputDisabled}
+          onChange={e => onChangeTask(e, id)}
+          onBlur={() => onInputBlur(id)}
+          onFocus={() => onInputFocus(id)}
+        />
+      </div>
+      <div className={css.buttonWrapper}>
         <button
-          className={css.deleteButton}
-          onClick={() => onDeleteButtonClick(id)}
+          type="button"
+          className={css.editButton}
+          disabled={checkboxChecked || editButtonDisabled}
+          onClick={() => onEditButtonClick(id)}
         >
-          <MdDeleteForever size={30} color="#fbfbfb" />
+          <FaPencil size={30} color="#fbfbfb" />
         </button>
-      )}
+        {checkboxChecked && (
+          <button
+            className={css.deleteButton}
+            onClick={() => onDeleteButtonClick(id)}
+          >
+            <MdDeleteForever size={30} color="#fbfbfb" />
+          </button>
+        )}
+      </div>
     </>
   );
 };

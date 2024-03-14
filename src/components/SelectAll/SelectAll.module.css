@@ -2,7 +2,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-right: 13px;
     height: 82px;
   }
 
@@ -33,4 +32,9 @@
     p {
       font-size: 18px;
     }
+  }
+
+  .buttonWrapper {
+    width: 110px;
+    text-align: center;
   }

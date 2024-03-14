@@ -16,7 +16,7 @@
 }
 
 .task-list-wrapper {
-  width: 700px;
+  width: 800px;
   display: flex;
   flex-direction: column;
   gap: 40px;

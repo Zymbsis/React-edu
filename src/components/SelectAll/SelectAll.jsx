@@ -1,28 +1,14 @@
 import css from './SelectAll.module.css';
-import { useId, useState, useEffect } from 'react';
+import { useId } from 'react';
 import { MdDeleteForever } from 'react-icons/md';
 
-const SelectAll = ({ taskList, selectAllTask }) => {
+const SelectAll = ({
+  onChangeCheckbox,
+  isCheckedAll,
+  selectCheckbox,
+  deleteAll,
+}) => {
   const checkboxId = useId();
-
-  const savedCheckbox = localStorage.getItem('selectCheckbox');
-  const [selectCheckbox, setSelectCheckbox] = useState(() => {
-    return savedCheckbox ? savedCheckbox : false;
-  });
-
-  const everyCheckboxChecked = taskList.every(task => {
-    return task.checkboxChecked === true;
-  });
-
-  const onChangeCheckbox = e => {
-    const isChecked = e.target.checked;
-    setSelectCheckbox(isChecked);
-    selectAllTask(isChecked);
-  };
-
-  useEffect(() => {
-    localStorage.setItem('selectCheckbox', selectCheckbox);
-  }, [selectCheckbox]);
 
   return (
     <div className={css.selectWrapper}>
@@ -30,15 +16,15 @@ const SelectAll = ({ taskList, selectAllTask }) => {
         <input
           type="checkbox"
           id={checkboxId}
-          checked={everyCheckboxChecked}
+          checked={selectCheckbox}
           onChange={onChangeCheckbox}
         />
         <label htmlFor={checkboxId}>Select All</label>
       </div>
 
-      {everyCheckboxChecked && (
-        <div>
-          <button type="button">
+      {isCheckedAll && (
+        <div className={css.buttonWrapper}>
+          <button type="button" onClick={deleteAll}>
             <MdDeleteForever size={30} color="#fbfbfb" />
           </button>
           <p>Delete All</p>

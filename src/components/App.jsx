@@ -5,19 +5,36 @@ import ToDoList from './ToDoList/ToDoList';
 import FindTask from './FindTask/FindTask';
 
 function App() {
-  const getInitialState = () => {
+  const getInitialStateTask = () => {
     const savedTaskList = JSON.parse(localStorage.getItem('task-list'));
     return savedTaskList ? savedTaskList : [];
   };
-  const [taskList, setTaskList] = useState(getInitialState);
+
+  const getInitialStateCheckbox = () => {
+    const savedCheckbox = localStorage.getItem('selectCheckbox');
+    return savedCheckbox ? savedCheckbox : false;
+  };
+
+  const [taskList, setTaskList] = useState(getInitialStateTask);
   const [taskFilter, setFilter] = useState('');
+  const [selectCheckbox, setSelectCheckbox] = useState(getInitialStateCheckbox);
+
   const visibleTask = taskList.filter(task =>
     task.text.toLowerCase().includes(taskFilter.toLowerCase())
   );
 
+  const isEveryCheckboxChecked = taskList.length
+    ? taskList.every(task => task.checkboxChecked)
+    : false;
+
   useEffect(() => {
     localStorage.setItem('task-list', JSON.stringify(taskList));
   }, [taskList]);
+
+  useEffect(() => {
+    localStorage.setItem('selectCheckbox', isEveryCheckboxChecked);
+    setSelectCheckbox(isEveryCheckboxChecked);
+  }, [isEveryCheckboxChecked]);
 
   const createNewTask = newTask => {
     setTaskList(prev => {
@@ -108,6 +125,16 @@ function App() {
     );
   };
 
+  const onChangeCheckbox = e => {
+    const isChecked = e.target.checked;
+    setSelectCheckbox(isChecked);
+    selectAllTask(isChecked);
+  };
+
+  const deleteAll = () => {
+    setTaskList([]);
+  };
+
   return (
     <div className="container">
       <div className="form-wrapper">
@@ -124,7 +151,10 @@ function App() {
             onInputBlur={onInputBlur}
             onEditButtonClick={onEditButtonClick}
             onDeleteButtonClick={onDeleteButtonClick}
-            selectAllTask={selectAllTask}
+            isCheckedAll={isEveryCheckboxChecked}
+            onChangeCheckbox={onChangeCheckbox}
+            selectCheckbox={selectCheckbox}
+            deleteAll={deleteAll}
           />
         )}
       </div>
