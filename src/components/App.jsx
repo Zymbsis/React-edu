@@ -11,7 +11,7 @@ function App() {
   };
 
   const getInitialStateCheckbox = () => {
-    const savedCheckbox = localStorage.getItem('selectCheckbox');
+    const savedCheckbox = JSON.parse(localStorage.getItem('selectCheckbox'));
     return savedCheckbox ? savedCheckbox : false;
   };
 
