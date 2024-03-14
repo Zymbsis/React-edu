@@ -7,7 +7,7 @@ const SelectAll = ({ taskList, selectAllTask }) => {
 
   const savedCheckbox = localStorage.getItem('selectCheckbox');
   const [selectCheckbox, setSelectCheckbox] = useState(() => {
-    return savedCheckbox.length ? savedCheckbox : false;
+    return savedCheckbox ? savedCheckbox : false;
   });
 
   const everyCheckboxChecked = taskList.every(task => {
