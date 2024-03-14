@@ -39,6 +39,7 @@ button {
 
 input,
 textarea {
+  background-color: inherit;
   color: inherit;
   outline: none;
 }
