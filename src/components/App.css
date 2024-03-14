@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+}
+
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid cadetblue;
+  border-radius: 15px;
+  width: 600px;
+  height: 462px;
+  padding: 30px;
+  gap: 50px;
+}
+
+.task-list-wrapper {
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.text {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 24px;
+}

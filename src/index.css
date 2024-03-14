@@ -5,10 +5,7 @@
   color-scheme: light dark;
   color: #242424;
   background-color: #fbfbfb;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 50px;
 }
 
 h1,
