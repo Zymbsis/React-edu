@@ -33,6 +33,9 @@ const Task = ({
           onChange={e => onChangeTask(e, id)}
           onBlur={() => onInputBlur(id)}
           onFocus={() => onInputFocus(id)}
+          onKeyDown={e => {
+            e.key === 'Enter' && e.currentTarget.blur();
+          }}
         />
       </div>
       <div className={css.buttonWrapper}>
