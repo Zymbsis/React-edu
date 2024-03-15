@@ -23,8 +23,8 @@ function App() {
     task.text.toLowerCase().includes(taskFilter.toLowerCase())
   );
 
-  const isEveryCheckboxChecked = taskList.length
-    ? taskList.every(task => task.checkboxChecked)
+  const isEveryCheckboxChecked = visibleTask.length
+    ? visibleTask.every(task => task.checkboxChecked)
     : false;
 
   useEffect(() => {
@@ -120,7 +120,9 @@ function App() {
   const selectAllTask = checkboxState => {
     setTaskList(
       taskList.map(task => {
-        return { ...task, checkboxChecked: checkboxState ? true : false };
+        return task.text.toLowerCase().includes(taskFilter.toLowerCase())
+          ? { ...task, checkboxChecked: checkboxState ? true : false }
+          : task;
       })
     );
   };
@@ -132,7 +134,12 @@ function App() {
   };
 
   const deleteAll = () => {
-    setTaskList([]);
+    setTaskList(
+      taskList.filter(task => {
+        return !task.text.toLowerCase().includes(taskFilter.toLowerCase());
+      })
+    );
+    setFilter('');
   };
 
   return (
