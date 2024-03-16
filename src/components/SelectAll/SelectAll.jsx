@@ -21,7 +21,6 @@ const SelectAll = ({
         />
         <label htmlFor={checkboxId}>Select All</label>
       </div>
-
       {isCheckedAll && (
         <div className={css.buttonWrapper}>
           <button type="button" onClick={deleteAll}>
